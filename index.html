@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Nuestro Baby Shower! ✨</title>
+    
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for clean minimalist icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: '#8EA47E',
+                        forest: '#6B8E60',
+                        cream: '#F0E6B2',
+                        taupe: '#A38568',
+                        gold: '#C5A059',
+                        alabaster: '#F9F8F3'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Smooth scrolling behavior and custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F8F3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8EA47E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B8E60;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Card hover effects */
+        .gift-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gift-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px -10px rgba(107, 142, 96, 0.15);
+        }
+
+        /* Pulsing Question Mark Animation */
+        @keyframes pulse-gold {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3));
+            }
+            50% {
+                transform: scale(1.08);
+                filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6));
+            }
+        }
+        .pulse-question {
+            animation: pulse-gold 3s infinite ease-in-out;
+        }
+
+        /* Floating Confetti and Hearts Animation style */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99;
+            top: -10px;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-alabaster text-taupe font-sans antialiased overflow-x-hidden selection:bg-sage selection:text-white">
+
+    <!-- Floating Minimalist Navigation Bar -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/80 backdrop-blur-md py-2.5 px-6 rounded-full border border-sage/20 shadow-sm transition-all duration-300">
+        <div class="flex items-center gap-6 text-sm font-medium">
+            <a href="#inicio" class="hover:text-forest transition-colors flex items-center gap-1.5 text-xs sm:text-sm">
+                <i class="fa-solid fa-baby text-sage"></i> Inicio
+            </a>
+            <a href="#fecha-lugar" class="hover:text-forest transition-colors flex items-center gap-1.5 text-xs sm:text-sm">
+                <i class="fa-solid fa-calendar-days text-sage"></i> Fecha & Lugar
+            </a>
+            <a href="#que-traer" class="hover:text-forest transition-colors flex items-center gap-1.5 text-xs sm:text-sm">
+                <i class="fa-solid fa-gift text-sage"></i> Qué traer
+            </a>
+            <a href="#ya-contamos" class="hover:text-forest transition-colors flex items-center gap-1.5 text-xs sm:text-sm">
+                <i class="fa-solid fa-circle-check text-sage"></i> Ya tenemos
+            </a>
+            <a href="#revelacion" class="hover:text-forest transition-colors flex items-center gap-1.5 text-xs sm:text-sm font-bold text-gold">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Revelación
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Inicio) -->
+    <section id="inicio" class="relative min-h-screen flex flex-col justify-between items-center px-4 py-16 text-center overflow-hidden bg-gradient-to-b from-cream/20 via-alabaster to-alabaster">
+        <!-- SVG Left Floral Corner Decoration -->
+        <div class="absolute top-0 left-0 w-32 sm:w-48 lg:w-64 text-sage/10 pointer-events-none">
+            <svg viewBox="0 0 100 100" fill="currentColor">
+                <path d="M0,0 C30,10 50,40 20,80 C15,85 5,95 0,100 Z" />
+                <path d="M10,0 C40,20 60,30 50,70" stroke="currentColor" stroke-width="2" fill="none" />
+                <circle cx="25" cy="25" r="4" fill="#C5A059" opacity="0.4" />
+                <circle cx="45" cy="45" r="3" fill="#6B8E60" opacity="0.3" />
+            </svg>
+        </div>
+        <!-- SVG Right Floral Corner Decoration -->
+        <div class="absolute top-0 right-0 w-32 sm:w-48 lg:w-64 text-sage/10 pointer-events-none transform scale-x-[-1]">
+            <svg viewBox="0 0 100 100" fill="currentColor">
+                <path d="M0,0 C30,10 50,40 20,80 C15,85 5,95 0,100 Z" />
+                <path d="M10,0 C40,20 60,30 50,70" stroke="currentColor" stroke-width="2" fill="none" />
+                <circle cx="25" cy="25" r="4" fill="#C5A059" opacity="0.4" />
+            </svg>
+        </div>
+
+        <div></div> <!-- Spacer for perfect vertical alignment -->
+
+        <!-- Hero Content Card -->
+        <div class="max-w-3xl mx-auto z-10 animate-fade-in-up px-4">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sage/10 text-forest text-xs sm:text-sm font-semibold tracking-wider uppercase mb-6 border border-sage/20">
+                <i class="fa-solid fa-sparkles text-gold"></i> ¡Estás Invitado!
+            </div>
+            <h1 class="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-forest leading-none mb-4 tracking-tight">
+                Baby Shower
+            </h1>
+            <p class="font-sans text-lg sm:text-2xl text-taupe/80 tracking-wide font-medium mb-8">
+                Esperando con amor la llegada de nuestro bebé
+            </p>
+            
+            <!-- Delicate SVG Separation Line -->
+            <div class="flex justify-center items-center gap-4 mb-8">
+                <div class="h-[1px] w-12 sm:w-24 bg-sage/30"></div>
+                <svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,18A2,2 0 0,1 10,16A2,2 0 0,1 12,14A2,2 0 0,1 14,16A2,2 0 0,1 12,18Z"/>
+                </svg>
+                <div class="h-[1px] w-12 sm:w-24 bg-sage/30"></div>
+            </div>
+
+            <p class="text-xs sm:text-sm uppercase tracking-widest text-taupe/80 max-w-md mx-auto leading-relaxed">
+                Acompáñanos a descubrir el dulce secreto de una nueva vida y festejar juntos este tierno camino.
+            </p>
+        </div>
+
+        <!-- Scroll down indicator -->
+        <div class="mt-12 animate-bounce">
+            <a href="#fecha-lugar" class="text-sage hover:text-forest transition-colors flex flex-col items-center gap-1">
+                <span class="text-xs uppercase tracking-widest font-semibold">Descubrir</span>
+                <i class="fa-solid fa-chevron-down text-lg"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Fecha y Lugar Section -->
+    <section id="fecha-lugar" class="relative py-24 px-4 bg-alabaster">
+        <!-- Botanical Backdrop Element Left -->
+        <div class="absolute bottom-10 left-0 w-24 sm:w-48 text-sage/10 pointer-events-none transform rotate-12">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L7.58,17.34C11.5,14.54 16.4,12.33 21,11C19.05,10 18,9 17,8M15.5,2C13.5,3 12,5 11.5,7C12.5,7 14,6 15,4.5C15.5,3.5 15.5,2.5 15.5,2Z"/></svg>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-sans font-bold text-3xl sm:text-5xl text-forest mb-4">Fecha & Lugar</h2>
+                <p class="text-sm sm:text-base text-taupe/80 max-w-lg mx-auto">Te esperamos con los brazos abiertos para celebrar la llegada más anhelada.</p>
+                <div class="h-[1px] w-24 bg-gold/50 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Balanced Two-Column Layout (RSVP Completely Removed) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <!-- Date Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-sage/10 shadow-sm flex flex-col justify-between">
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="w-16 h-16 rounded-2xl bg-cream/30 flex items-center justify-center shrink-0 border border-cream">
+                            <i class="fa-regular fa-calendar-check text-2xl text-forest"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs uppercase tracking-widest text-gold font-bold">Cuándo será</span>
+                            <h3 class="font-sans font-bold text-xl sm:text-2xl text-forest mt-1">Domingo, 16 de Agosto</h3>
+                            <p class="text-sm text-taupe/80 mt-1">A partir de las 4:30 PM (Hora de ingreso)</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-alabaster">
+                        <button onclick="addToCalendar()" class="w-full py-3 bg-sage/10 hover:bg-sage/20 text-forest text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2 border border-sage/20">
+                            <i class="fa-regular fa-bell text-sm"></i> Agendar en Google Calendar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Location Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-sage/10 shadow-sm flex flex-col justify-between">
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="w-16 h-16 rounded-2xl bg-cream/30 flex items-center justify-center shrink-0 border border-cream">
+                            <i class="fa-solid fa-map-location-dot text-2xl text-forest"></i>
+                        </div>
+                        <div class="w-full">
+                            <span class="text-xs uppercase tracking-widest text-gold font-bold">Dónde nos vemos</span>
+                            <h3 class="font-sans font-bold text-xl sm:text-2xl text-forest mt-1">Salón "Zapan de novaterra"</h3>
+                            <p class="text-sm text-taupe/80 mt-1">Cra 9 No 7 24 Sur - Mosquera, Cundinamarca</p>
+                        </div>
+                    </div>
+
+                    <!-- Visual map and route button -->
+                    <div class="mt-6">
+                        <div class="relative rounded-2xl overflow-hidden border border-sage/15 shadow-inner h-24 bg-slate-100 flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#8EA47E_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                            <div class="absolute w-6 h-6 rounded-full bg-forest/20 animate-ping"></div>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <i class="fa-solid fa-location-pin text-2xl text-forest drop-shadow-md"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://maps.app.goo.gl/iYhjxaxjvqS3mmQdA" target="_blank" class="w-full py-3 bg-sage hover:bg-forest text-white text-xs font-bold rounded-xl shadow-sm transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-route text-sm"></i> Abrir en Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qué Puedes Traer Section (Dynamic) -->
+    <section id="que-traer" class="relative py-24 px-4 bg-gradient-to-b from-alabaster via-cream/10 to-alabaster">
+        <!-- Accent floral graphic background -->
+        <div class="absolute top-10 right-0 w-32 sm:w-64 text-sage/10 pointer-events-none transform -rotate-12">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,18A2,2 0 0,1 10,16A2,2 0 0,1 12,14A2,2 0 0,1 14,16A2,2 0 0,1 12,18Z"/></svg>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-cream/50 text-forest text-xs font-semibold rounded-full border border-gold/30 mb-3">
+                    <i class="fa-solid fa-heart text-gold"></i> Lista de Recomendaciones
+                </div>
+                <h2 class="font-sans font-bold text-3xl sm:text-5xl text-forest mb-4">Qué puedes traer</h2>
+                <p class="text-sm sm:text-base text-taupe/80 max-w-xl mx-auto">Queremos facilitarte las cosas. Aquí tienes una lista interactiva de cosas que aún necesitamos para nuestra bebé. Puedes reservar una para que los demás invitados lo sepan.</p>
+                <div class="h-[1px] w-24 bg-gold/50 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Categories and Gift List Grid (Populated via JS) -->
+            <div id="gifts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gift cards will be injected here dynamically -->
+            </div>
+
+            <!-- Custom Suggestion Box -->
+            <div class="mt-12 bg-cream/20 border border-gold/30 p-6 rounded-3xl text-center max-w-2xl mx-auto">
+                <h4 class="font-sans font-bold text-lg text-forest mb-2">💡 ¿Quieres traer otra cosa?</h4>
+                <p class="text-xs sm:text-sm text-taupe/90">Si tienes en mente un detalle especial que no se encuentra en esta lista, por favor comunícate directamente con nosotros. ¡Estaremos encantados de escucharte!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ya contamos con Section (Dynamic) -->
+    <section id="ya-contamos" class="relative py-24 px-4 bg-alabaster">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-sans font-bold text-3xl sm:text-5xl text-forest mb-4">Ya contamos con</h2>
+                <p class="text-sm sm:text-base text-taupe/80 max-w-xl mx-auto">Para evitar duplicados o acumular cositas que ya tenemos cubiertas, te compartimos lo que amablemente ya nos han obsequiado o ya compramos:</p>
+                <div class="h-[1px] w-24 bg-gold/50 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Already have items grid (Populated via JS) -->
+            <div id="already-have-container" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Acquired elements will be injected here dynamically -->
+            </div>
+
+            <!-- Beautiful phrase -->
+            <div class="mt-16 text-center max-w-xl mx-auto">
+                <p class="font-sans text-base sm:text-lg text-forest font-semibold">"Cada pequeño detalle cuenta para nosotros, pero lo más importante es tu cariño y buenos deseos para esta nueva etapa de nuestra vida."</p>
+                <div class="mt-4 text-xs font-bold uppercase tracking-widest text-gold">— Papá & Mamá</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- La Gran Revelación Section -->
+    <section id="revelacion" class="relative py-24 px-4 bg-gradient-to-b from-alabaster to-white border-t border-sage/10 overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 text-gold text-xs font-semibold rounded-full border border-gold/30 mb-4">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> El Momento Más Esperado
+            </div>
+            
+            <h2 class="font-sans font-bold text-3xl sm:text-5xl text-forest mb-6">La Gran Revelación</h2>
+            <div class="h-[1px] w-24 bg-gold/50 mx-auto mb-12"></div>
+
+            <!-- STATE 1: COUNTDOWN & MYSTERY BANNER -->
+            <div id="reveal-countdown-container" class="block space-y-12">
+                <!-- Mystery Banner -->
+                <div class="max-w-2xl mx-auto bg-white p-8 sm:p-12 rounded-3xl border border-sage/15 shadow-md flex flex-col items-center gap-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sage via-cream to-gold"></div>
+                    <div class="w-24 h-24 rounded-full bg-cream/30 flex items-center justify-center pulse-question">
+                        <span class="text-5xl font-extrabold text-gold">?</span>
+                    </div>
+                    <div>
+                        <h3 class="font-sans font-bold text-2xl text-forest mb-2">¿Niña o Niño?</h3>
+                        <p class="text-sm text-taupe/80 max-w-md mx-auto leading-relaxed">
+                            El gran misterio se revelará exactamente a las 4:30 PM de este domingo 16 de Agosto. ¡Sigue la cuenta regresiva con nosotros!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Modern Elegant Countdown Timer Container -->
+                <div class="bg-white/60 backdrop-blur-md rounded-2xl p-6 md:p-8 max-w-xl mx-auto border border-sage/10 shadow-sm">
+                    <div class="grid grid-cols-4 gap-2 sm:gap-4">
+                        <div class="bg-white p-3 sm:p-4 rounded-xl border border-sage/10">
+                            <span id="days" class="block font-sans text-2xl sm:text-4xl text-forest font-bold">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-taupe/70 tracking-wider">Días</span>
+                        </div>
+                        <div class="bg-white p-3 sm:p-4 rounded-xl border border-sage/10">
+                            <span id="hours" class="block font-sans text-2xl sm:text-4xl text-forest font-bold">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-taupe/70 tracking-wider">Horas</span>
+                        </div>
+                        <div class="bg-white p-3 sm:p-4 rounded-xl border border-sage/10">
+                            <span id="minutes" class="block font-sans text-2xl sm:text-4xl text-forest font-bold">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-taupe/70 tracking-wider">Min</span>
+                        </div>
+                        <div class="bg-white p-3 sm:p-4 rounded-xl border border-sage/10">
+                            <span id="seconds" class="block font-sans text-2xl sm:text-4xl text-forest font-bold">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-taupe/70 tracking-wider">Seg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATE 2: REVELATION IMAGE DISPLAY (Hidden initially, shown after date or via simulator) -->
+            <div id="reveal-image-container" class="hidden animate-fade-in-up space-y-6">
+                <div class="max-w-3xl mx-auto bg-white p-4 sm:p-6 rounded-3xl border-4 border-gold shadow-2xl relative overflow-hidden transition-all duration-1000">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-pink-100 rounded-full blur-2xl opacity-50"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
+                    
+                    <!-- Verbatim reference to image_5dcbe4.jpg -->
+                    <img src="image_5dcbe4.jpg" alt="Revelación de Niña" class="w-full h-auto rounded-2xl shadow-md border border-sage/10">
+                </div>
+                <div class="max-w-md mx-auto">
+                    <p class="font-sans text-lg text-forest font-bold mt-4">🌸 ¡Es una maravillosa niña y estamos ansiosos de verla crecer! 🌸</p>
+                    <p class="text-xs text-taupe/70 mt-1">Gracias por compartir con nosotros esta mágica e inolvidable revelación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-forest text-alabaster py-12 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-sans font-bold text-2xl sm:text-3xl mb-3">¡Te Esperamos!</h3>
+            <p class="text-xs sm:text-sm text-alabaster/80 mb-6">Gracias por ser parte fundamental de nuestra familia y de la historia de nuestro bebé.</p>
+            
+            <!-- SVG Minimalist Plant Leaves -->
+            <div class="w-16 h-16 mx-auto mb-6 text-cream opacity-50">
+                <svg viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50,10 C50,10 70,30 50,70 C30,30 50,10 50,10 Z" />
+                    <path d="M50,40 C55,50 65,55 70,55" stroke="currentColor" stroke-width="2" fill="none" />
+                    <path d="M50,50 C45,55 35,60 30,60" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+            </div>
+
+            <p class="text-[10px] uppercase tracking-widest text-alabaster/50">Baby Shower Event 2026 • Hecho con Amor</p>
+        </div>
+    </footer>
+
+    <!-- Reservation Modal Modal Background -->
+    <div id="reserve-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white max-w-md w-full rounded-3xl border border-sage/20 p-6 shadow-2xl relative animate-fade-in-up">
+            <button onclick="closeReserveModal()" class="absolute top-4 right-4 text-taupe/50 hover:text-taupe transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-cream/50 flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-gift text-forest text-lg"></i>
+                </div>
+                <h3 class="font-sans font-bold text-xl text-forest">Reservar Artículo</h3>
+                <p id="modal-item-title" class="text-sm font-bold text-gold mt-1">Nombre del regalo</p>
+                <p class="text-xs text-taupe/80 mt-2">Al reservar este artículo, te comprometes a traerlo al evento, impidiendo que otros invitados lo compren por duplicado. ¡Gracias!</p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-taupe mb-1">Tu Nombre</label>
+                    <input type="text" id="reserve-name" placeholder="Ej: Diana Torres" class="w-full px-4 py-3 rounded-xl border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage/50 text-sm bg-alabaster/50 transition-all">
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button onclick="closeReserveModal()" class="w-1/2 py-3 bg-alabaster hover:bg-cream/30 text-taupe font-bold rounded-xl text-xs uppercase tracking-wider transition-colors border border-sage/20">
+                        Cancelar
+                    </button>
+                    <button onclick="confirmReservation()" class="w-1/2 py-3 bg-sage hover:bg-forest text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-colors shadow-md">
+                        Confirmar Reserva
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulator Toggle Button (Floating in bottom-right for easy demoing) -->
+    <!-- <div class="fixed bottom-4 right-4 z-50">
+        <button onclick="toggleRevealSimulation()" class="bg-gold hover:bg-yellow-600 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg flex items-center gap-1.5 border border-white transition-all transform hover:scale-105">
+            <i class="fa-solid fa-flask"></i> <span id="sim-text">Simular Revelación</span>
+        </button>
+    </div> -->
+
+    <script>
+        // ==========================================
+        //        // ==========================================
+
+        // Tarjetas de "Qué Puedes Traer" (Recomendaciones)
+        const giftsData = [
+    {
+        "id": 1,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Pañales de etapa 1",
+        "description": "Esenciales para el primer mes, preferiblemente marcas hipoalergénicas.",
+        "priority": "Alta"
+    },
+    {
+        "id": 2,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Pañales de etapa 2",
+        "description": "Los bebés crecen rápido; tener stock de esta etapa es de gran ayuda.",
+        "priority": "Alta"
+    },
+    {
+        "id": 3,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Toallitas húmedas para piel sensible",
+        "description": "Paquetes grandes o cajas sin alcohol ni fragancias.",
+        "priority": "Alta"
+    },
+    {
+        "id": 4,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Crema antipañalitis",
+        "description": "Para prevenir y tratar quemaduras o irritaciones en la piel.",
+        "priority": "Alta"
+    },
+    {
+        "id": 5,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Jabón líquido para bebé",
+        "description": "Fórmula con PH neutro y sin lágrimas para el baño diario.",
+        "priority": "Alta"
+    },
+    {
+        "id": 6,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Champú suave para bebé",
+        "description": "Especial para el cuidado del cuero cabelludo del recién nacido.",
+        "priority": "Media"
+    },
+    {
+        "id": 7,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Crema hidratante corporal para",
+        "description": "Hipoalergénica para mantener la piel del bebé suave y protegida.",
+        "priority": "Media"
+    },
+    {
+        "id": 8,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Aceite para masajes de bebé",
+        "description": "Ideal para masajes relajantes después del baño o antes de dormir.",
+        "priority": "Baja"
+    },
+    {
+        "id": 9,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Cepillo de cerdas muy suaves y peinilla",
+        "description": "Para peinar con delicadeza el cabello del recién nacido.",
+        "priority": "Media"
+    },
+    {
+        "id": 10,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Toallas de baño con capota",
+        "description": "De algodón absorbente para mantenerlo abrigado al salir del baño.",
+        "priority": "Alta"
+    },
+    {
+        "id": 11,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Toallitas faciales pequeñas de algodón",
+        "description": "Ideales para limpiar babas o restos de leche con suavidad.",
+        "priority": "Alta"
+    },
+    {
+        "id": 12,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Termómetro digital para la fiebre",
+        "description": "De axila o infrarrojo, un elemento indispensable en el botiquín.",
+        "priority": "Alta"
+    },
+    {
+        "id": 13,
+        "category": "Higiene y Cuidado Diario",
+        "title": "Copitos de algodón con tope de seguridad",
+        "description": "Diseñados especialmente para la higiene segura de los bebés.",
+        "priority": "Baja"
+    },
+    {
+        "id": 14,
+        "category": "Alimentación y Lactancia",
+        "title": "Protectores de lactancia",
+        "description": "Lavables o desechables, ideales para proteger la ropa de la mamá.",
+        "priority": "Media"
+    },
+    {
+        "id": 15,
+        "category": "Alimentación y Lactancia",
+        "title": "Crema de lanolina para pezones",
+        "description": "Para hidratar y aliviar la piel de la mamá durante la lactancia.",
+        "priority": "Media"
+    },
+    {
+        "id": 16,
+        "category": "Alimentación y Lactancia",
+        "title": "Bolsas de almacenamiento para leche materna",
+        "description": "Esenciales para armar el banco de leche de forma higiénica.",
+        "priority": "Alta"
+    },
+    {
+        "id": 17,
+        "category": "Alimentación y Lactancia",
+        "title": "Teteros pequeños (2 oz o 4 oz)",
+        "description": "Con tetinas de flujo lento para las primeras semanas.",
+        "priority": "Media"
+    },
+    {
+        "id": 18,
+        "category": "Alimentación y Lactancia",
+        "title": "Teteros medianos/grandes (8 oz o 9 oz)",
+        "description": "Útiles a medida que aumenta la ingesta de leche del bebé.",
+        "priority": "Media"
+    },
+    {
+        "id": 19,
+        "category": "Alimentación y Lactancia",
+        "title": "Cepillo limpia-teteros y limpia-tetinas",
+        "description": "Para garantizar una higiene profunda de los utensilios.",
+        "priority": "Alta"
+    },
+    {
+        "id": 20,
+        "category": "Alimentación y Lactancia",
+        "title": "Jabón lavaplatos especial para bebé",
+        "description": "Fórmula biodegradable y segura para lavar teteros y accesorios.",
+        "priority": "Media"
+    },
+    {
+        "id": 21,
+        "category": "Alimentación y Lactancia",
+        "title": "Baberos impermeables",
+        "description": "Con ajuste de velcro o broche para la hora de comer.",
+        "priority": "Alta"
+    },
+    {
+        "id": 22,
+        "category": "Alimentación y Lactancia",
+        "title": "Baberos de tela tipo pañoleta",
+        "description": "De algodón, ideales para absorber la saliva en la dentición.",
+        "priority": "Alta"
+    },
+    {
+        "id": 23,
+        "category": "Alimentación y Lactancia",
+        "title": "Dispensador de leche en polvo",
+        "description": "Para llevar las porciones exactas y listas al salir de casa.",
+        "priority": "Baja"
+    },
+    {
+        "id": 24,
+        "category": "Alimentación y Lactancia",
+        "title": "Esterilizador de teteros",
+        "description": "Para microondas o eléctrico, asegura la eliminación de bacterias.",
+        "priority": "Media"
+    },
+    {
+        "id": 25,
+        "category": "Alimentación y Lactancia",
+        "title": "Escurridor de teteros y accesorios",
+        "description": "Diseño compacto para secar teteros de forma organizada e higiénica.",
+        "priority": "Baja"
+    },
+    {
+        "id": 26,
+        "category": "Ropa y Organización",
+        "title": "Mamelucos/Bodys de manga corta",
+        "description": "Tallas de 0-3 y 3-6 meses, prendas básicas del día a día.",
+        "priority": "Alta"
+    },
+    {
+        "id": 27,
+        "category": "Ropa y Organización",
+        "title": "Mamelucos/Bodys de manga larga",
+        "description": "Tallas de 0-3 y 3-6 meses para días frescos.",
+        "priority": "Alta"
+    },
+    {
+        "id": 28,
+        "category": "Ropa y Organización",
+        "title": "Pijamas enterizas con pies",
+        "description": "Con cremallera para facilitar el cambio de pañal en la noche.",
+        "priority": "Alta"
+    },
+    {
+        "id": 29,
+        "category": "Ropa y Organización",
+        "title": "Medias o calcetines suaves",
+        "description": "Para mantener abrigados los pies del recién nacido.",
+        "priority": "Alta"
+    },
+    {
+        "id": 30,
+        "category": "Ropa y Organización",
+        "title": "Gorritos de algodón suave",
+        "description": "Esenciales para proteger su cabecita y orejas del frío.",
+        "priority": "Alta"
+    },
+    {
+        "id": 31,
+        "category": "Ropa y Organización",
+        "title": "Mitones de algodón",
+        "description": "Para evitar que el bebé se arañe el rostro involuntariamente.",
+        "priority": "Media"
+    },
+    {
+        "id": 32,
+        "category": "Ropa y Organización",
+        "title": "Organizadores de tela para cajones",
+        "description": "Ideales para clasificar calcetines, gorros y prendas pequeñas.",
+        "priority": "Baja"
+    },
+    {
+        "id": 33,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Protectores de colchón impermeables",
+        "description": "Para proteger el colchón de la cuna ante cualquier derrame.",
+        "priority": "Alta"
+    },
+    {
+        "id": 34,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Sábanas ajustables para cuna",
+        "description": "Sábanas suaves de algodón que se adaptan perfecto al colchón.",
+        "priority": "Alta"
+    },
+    {
+        "id": 35,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Sacos de dormir para bebé",
+        "description": "Mantienen al bebé abrigado de forma segura eliminando sábanas sueltas.",
+        "priority": "Alta"
+    },
+    {
+        "id": 36,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Sonajeros livianos",
+        "description": "Fáciles de agarrar para estimular su oído y coordinación motriz.",
+        "priority": "Media"
+    },
+    {
+        "id": 37,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Mordedores de silicona",
+        "description": "Ideales para aliviar las encías cuando empiece la dentición.",
+        "priority": "Media"
+    },
+    {
+        "id": 38,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Libros de tela o texturas",
+        "description": "Perfectos para iniciar la estimulación visual y táctil temprana.",
+        "priority": "Baja"
+    },
+    {
+        "id": 39,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Luz de noche tenue",
+        "description": "Luz suave perfecta para las tomas y cambios de pañal nocturnos.",
+        "priority": "Media"
+    },
+    {
+        "id": 40,
+        "category": "Entretenimiento, Estimulación y Sueño",
+        "title": "Máquina de ruido blanco",
+        "description": "Ayuda al bebé a conciliar y mantener un sueño profundo y tranquilo.",
+        "priority": "Media"
+    },
+    {
+        "id": 41,
+        "category": "Viaje, Porteo y Varios",
+        "title": "Fular elástico o mochila de porteo",
+        "description": "Ergonómico, ideal para mantener al bebé cerca y las manos libres.",
+        "priority": "Alta"
+    },
+    {
+        "id": 42,
+        "category": "Viaje, Porteo y Varios",
+        "title": "Contenedor para pañales sucios",
+        "description": "Ayuda a controlar los olores de forma higiénica en su habitación.",
+        "priority": "Media"
+    }
+];
+
+        // Tarjetas de "Ya Contamos Con" (Artículos adquiridos)
+        const alreadyHaveData = [
+           {
+        "id": 1,
+        "title": "Coche para bebé",
+        "icon": "fa-baby-carriage",
+        "status": "Adquirida"
+    },
+    {
+        "id": 2,
+        "title": "Corral cuna",
+        "icon": "fa-tent",
+        "status": "Adquirida"
+    },
+    {
+        "id": 3,
+        "title": "Tina de baño",
+        "icon": "fa-bath",
+        "status": "Adquirida"
+    },
+    {
+        "id": 4,
+        "title": "Gimnasio de actividades",
+        "icon": "fa-shapes",
+        "status": "Adquirida"
+    },
+    {
+        "id": 5,
+        "title": "Calentador de teteros",
+        "icon": "fa-temperature-arrow-up",
+        "status": "Adquirida"
+    },
+    {
+        "id": 6,
+        "title": "Cobijas térmicas",
+        "icon": "fa-blanket",
+        "status": "Adquirida"
+    }
+        ];
+
+        let forceSimulation = false; // Variable para controlar el botón de testing
+
+        // ==========================================
+        //        // ==========================================
+
+        // Fecha de Revelación: Domingo 16 de Agosto de 2026 a las 4:30 PM (16:30 hrs)
+        const revealTargetDate = new Date("Aug 16, 2026 16:30:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = revealTargetDate - now;
+
+            // Determinar si ya es hora de la revelación o si está activada la simulación
+            if (difference <= 0 || forceSimulation) {
+                // Cambiar la vista para revelar la imagen
+                document.getElementById("reveal-countdown-container").classList.add("hidden");
+                document.getElementById("reveal-image-container").classList.remove("hidden");
+                
+                // Activar lluvia de confeti/corazones si no se ha iniciado
+                if (!window.confettiActive) {
+                    window.confettiActive = true;
+                    startConfettiShower();
+                }
+            } else {
+                // Asegurar que se muestre el countdown si no se está simulando
+                document.getElementById("reveal-countdown-container").classList.remove("hidden");
+                document.getElementById("reveal-image-container").classList.add("hidden");
+                
+                // Detener confeti
+                window.confettiActive = false;
+
+                // Calcular valores del temporizador
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                // Inyectar en el DOM
+                document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+        }
+
+        // Ejecutar temporizador cada segundo
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Control del botón simulación
+        function toggleRevealSimulation() {
+            forceSimulation = !forceSimulation;
+            const simText = document.getElementById("sim-text");
+            if (forceSimulation) {
+                simText.innerText = "Ver Cuenta Regresiva";
+                // Lluvia inmediata al cambiar estado
+                startConfettiShower();
+            } else {
+                simText.innerText = "Simular Revelación";
+                // Remover partículas existentes
+                const activeParticles = document.querySelectorAll('.particle');
+                activeParticles.forEach(p => p.remove());
+                window.confettiActive = false;
+            }
+            updateCountdown();
+        }
+
+        // ==========================================
+        //        // ==========================================
+
+        function startConfettiShower() {
+            if (!window.confettiActive) return;
+
+            const particleTypes = ['🌸', '💖', '✨', '💕', '👶'];
+            const colors = ['#E91E63', '#F48FB1', '#CE93D8', '#C5A059', '#8EA47E'];
+
+            const interval = setInterval(() => {
+                if (!window.confettiActive) {
+                    clearInterval(interval);
+                    return;
+                }
+
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Determinar si es emoji o un trozo de papel de color
+                if (Math.random() > 0.5) {
+                    particle.innerText = particleTypes[Math.floor(Math.random() * particleTypes.length)];
+                    particle.style.fontSize = Math.random() * 20 + 15 + 'px';
+                } else {
+                    particle.style.width = Math.random() * 8 + 6 + 'px';
+                    particle.style.height = Math.random() * 12 + 8 + 'px';
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.borderRadius = '50%';
+                }
+
+                // Posicionamiento horizontal aleatorio
+                particle.style.left = Math.random() * 100 + 'vw';
+                // Velocidad de caída aleatoria
+                particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+                // Opacidad aleatoria
+                particle.style.opacity = Math.random() * 0.7 + 0.3;
+
+                document.body.appendChild(particle);
+
+                // Eliminar del DOM después de que termine la animación
+                setTimeout(() => {
+                    particle.remove();
+                }, 6000);
+
+            }, 150);
+        }
+
+        // ==========================================
+        //        // ==========================================
+
+        // Renderiza la sección de "Qué Puedes Traer"
+        function renderGifts() {
+            const container = document.getElementById('gifts-container');
+            const savedReservations = JSON.parse(localStorage.getItem('gift_reservations')) || {};
+            
+            container.innerHTML = giftsData.map(gift => {
+                const reservedBy = savedReservations[gift.id];
+                const isReserved = !!reservedBy;
+
+                // Definimos el badge de estado de acuerdo a si está reservado o libre
+                const statusBadge = isReserved 
+                    ? `<span id="badge-gift-${gift.id}" class="text-[10px] font-bold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Reservado por ${reservedBy}
+                       </span>`
+                    : `<span id="badge-gift-${gift.id}" class="text-[10px] font-bold px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Disponible
+                       </span>`;
+
+                // Definimos el botón interactivo de acuerdo al estado
+                const actionButton = isReserved
+                    ? `<button id="btn-gift-${gift.id}" class="px-4 py-2 bg-taupe/20 text-taupe/70 text-xs font-bold rounded-xl cursor-not-allowed" disabled>
+                            ¡Reservado!
+                       </button>`
+                    : `<button onclick="openReserveModal(${gift.id}, '${gift.title}')" id="btn-gift-${gift.id}" class="px-4 py-2 bg-sage hover:bg-forest text-white text-xs font-bold rounded-xl shadow-sm transition-colors">
+                            Reservar
+                       </button>`;
+
+                return `
+                    <div class="bg-white p-6 rounded-3xl border border-sage/10 shadow-sm flex flex-col justify-between gift-card" id="gift-card-${gift.id}">
+                        <div>
+                            <div class="flex justify-between items-start gap-2 mb-4">
+                                <span class="text-[10px] uppercase font-bold tracking-widest px-3 py-1 bg-sage/10 text-forest rounded-full">${gift.category}</span>
+                                ${statusBadge}
+                            </div>
+                            <h4 class="font-sans font-bold text-lg sm:text-xl text-forest mb-2">${gift.title}</h4>
+                            <p class="text-xs text-taupe/80 mb-4">${gift.description}</p>
+                        </div>
+                        <div class="pt-4 border-t border-alabaster flex justify-between items-center">
+                            <span class="text-[10px] text-taupe/60 font-semibold tracking-wide uppercase">Prioridad: ${gift.priority}</span>
+                            ${actionButton}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Renderiza la sección de "Ya Contamos Con"
+        function renderAlreadyHave() {
+            const container = document.getElementById('already-have-container');
+            
+            container.innerHTML = alreadyHaveData.map(item => {
+                return `
+                    <div class="bg-white/60 p-3 rounded-2xl border border-sage/10 flex flex-col items-center text-center opacity-75">
+                        <div class="w-12 h-12 rounded-full bg-cream/40 flex items-center justify-center mb-3">
+                            <i class="fa-solid ${item.icon} text-forest text-lg"></i>
+                        </div>
+                        <h4 class="font-sans font-bold text-base text-forest mb-1">${item.title}</h4>
+                        <span class="text-[10px] font-bold text-taupe/80 bg-cream px-2 py-0.5 rounded-full">
+                            <i class="fa-solid fa-check"></i> ${item.status}
+                        </span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Enlace directo a Google Calendar
+        function addToCalendar() {
+            const title = "Baby Shower de nuestra pequeña 🌸";
+            const details = "Acompáñanos a festejar la revelación de sexo y la pronta llegada de nuestra bebé.";
+            const location = "Salón de Eventos Zapan de novaterra - Cra 9 No 7 24 Sur, Mosquera";
+            const startDate = "20260816T163000";
+            const endDate = "20260816T213000";
+            
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            window.open(calendarUrl, '_blank');
+        }
+
+        // Lógica del modal de reservas
+        let currentGiftId = null;
+        let currentGiftName = "";
+
+        function openReserveModal(id, name) {
+            currentGiftId = id;
+            currentGiftName = name;
+            document.getElementById('modal-item-title').innerText = name;
+            document.getElementById('reserve-modal').classList.remove('hidden');
+        }
+
+        function closeReserveModal() {
+            document.getElementById('reserve-modal').classList.add('hidden');
+            document.getElementById('reserve-name').value = "";
+            currentGiftId = null;
+            currentGiftName = "";
+        }
+
+        function confirmReservation() {
+            const userName = document.getElementById('reserve-name').value.trim();
+            if (!userName) {
+                const inputField = document.getElementById('reserve-name');
+                inputField.classList.add('border-red-500');
+                setTimeout(() => {
+                    inputField.classList.remove('border-red-500');
+                }, 1000);
+                return;
+            }
+
+            // Guardar la reservación en localStorage
+            const savedReservations = JSON.parse(localStorage.getItem('gift_reservations')) || {};
+            savedReservations[currentGiftId] = userName;
+            localStorage.setItem('gift_reservations', JSON.stringify(savedReservations));
+
+            // Actualizar la interfaz de las tarjetas recreándolas dinámicamente
+            renderGifts();
+            closeReserveModal();
+        }
+
+        // Cargar datos dinámicos cuando se monta la ventana
+        window.addEventListener('DOMContentLoaded', () => {
+            renderGifts();
+            renderAlreadyHave();
+        });
+    </script>
+</body>
+</html>
