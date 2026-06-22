@@ -210,7 +210,7 @@
                         <div>
                             <span class="text-xs uppercase tracking-widest text-gold font-bold">Cuándo será</span>
                             <h3 class="font-sans font-bold text-xl sm:text-2xl text-forest mt-1">Domingo, 16 de Agosto</h3>
-                            <p class="text-sm text-taupe/80 mt-1">A partir de las 4:30 PM (Hora de ingreso)</p>
+                            <p class="text-sm text-taupe/80 mt-1">A partir de las :00 PM (Hora de ingreso)</p>
                         </div>
                     </div>
                     <div class="mt-8 pt-6 border-t border-alabaster">
@@ -907,13 +907,16 @@
                        </span>`;
 
                 // Definimos el botón interactivo de acuerdo al estado
-                const actionButton = isReserved
-                    ? `<button id="btn-gift-${gift.id}" class="px-4 py-2 bg-taupe/20 text-taupe/70 text-xs font-bold rounded-xl cursor-not-allowed" disabled>
-                            ¡Reservado!
-                       </button>`
-                    : `<button onclick="openReserveModal(${gift.id}, '${gift.title}')" id="btn-gift-${gift.id}" class="px-4 py-2 bg-sage hover:bg-forest text-white text-xs font-bold rounded-xl shadow-sm transition-colors">
-                            Reservar
-                       </button>`;
+                // const actionButton = isReserved
+                //     ? `<button id="btn-gift-${gift.id}" class="px-4 py-2 bg-taupe/20 text-taupe/70 text-xs font-bold rounded-xl cursor-not-allowed" disabled>
+                //             ¡Reservado!
+                //        </button>`
+                //     : `<button onclick="openReserveModal(${gift.id}, '${gift.title}')" id="btn-gift-${gift.id}" class="px-4 py-2 bg-sage hover:bg-forest text-white text-xs font-bold rounded-xl shadow-sm transition-colors">
+                //             Reservar
+                //        </button>`;
+                       const actionButton = isReserved
+                    ? ``
+                    : ``;
 
                 return `
                     <div class="bg-white p-6 rounded-3xl border border-sage/10 shadow-sm flex flex-col justify-between gift-card" id="gift-card-${gift.id}">
