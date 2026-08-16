@@ -354,19 +354,32 @@
                 </div>
             </div>
 
-            <!-- STATE 2: REVELATION IMAGE DISPLAY (Hidden initially, shown after date or via simulator) -->
+            <!-- STATE 2: REVELATION DISPLAY (Hidden initially, shown after date or by admin) -->
             <div id="reveal-image-container" class="hidden animate-fade-in-up space-y-6">
-                <div class="max-w-3xl mx-auto bg-white p-4 sm:p-6 rounded-3xl border-4 border-gold shadow-2xl relative overflow-hidden transition-all duration-1000">
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-pink-100 rounded-full blur-2xl opacity-50"></div>
-                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
-                    
-                    <!-- Verbatim reference to image_5dcbe4.jpg -->
-                    <img src="image_5dcbe4.jpg" alt="Revelación de Niña" class="w-full h-auto rounded-2xl shadow-md border border-sage/10">
+                <div id="reveal-card" class="max-w-3xl mx-auto bg-white p-8 sm:p-14 rounded-3xl border-4 border-gold shadow-2xl relative overflow-hidden transition-all duration-1000">
+                    <div id="reveal-blob-a" class="absolute -top-10 -right-10 w-40 h-40 bg-pink-100 rounded-full blur-2xl opacity-50"></div>
+                    <div id="reveal-blob-b" class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-100 rounded-full blur-2xl opacity-50"></div>
+
+                    <div class="relative z-10 flex flex-col items-center gap-4">
+                        <div id="reveal-icon-wrap" class="w-24 h-24 rounded-full bg-cream/40 flex items-center justify-center text-5xl">
+                            <span id="reveal-icon">👶</span>
+                        </div>
+                        <p id="reveal-gender-label" class="text-[11px] font-bold uppercase tracking-[0.3em] text-gold">Nuestro Bebé</p>
+                        <h3 id="reveal-baby-name" class="font-sans font-extrabold text-4xl sm:text-6xl text-forest break-words">Muy Pronto</h3>
+                        <div class="h-[1px] w-24 bg-gold/50"></div>
+                        <p id="reveal-message" class="font-sans text-base sm:text-lg text-forest font-bold max-w-md">Los papás publicarán el nombre en cualquier momento.</p>
+                    </div>
                 </div>
                 <div class="max-w-md mx-auto">
-                    <p class="font-sans text-lg text-forest font-bold mt-4">🌸 ¡Es una maravillosa niña y estamos ansiosos de verla crecer! 🌸</p>
                     <p class="text-xs text-taupe/70 mt-1">Gracias por compartir con nosotros esta mágica e inolvidable revelación.</p>
                 </div>
+            </div>
+
+            <!-- Discreet admin access -->
+            <div class="mt-10">
+                <button onclick="openAdminModal()" class="text-[10px] uppercase tracking-widest text-taupe/40 hover:text-gold transition-colors inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock"></i> Acceso Mamá & Papá
+                </button>
             </div>
         </div>
     </section>
@@ -419,6 +432,97 @@
                         Confirmar Reserva
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal: password + baby name/gender -->
+    <div id="admin-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white max-w-md w-full rounded-3xl border border-sage/20 p-6 shadow-2xl relative animate-fade-in-up max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-taupe/50 hover:text-taupe transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-cream/50 flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-key text-forest text-lg"></i>
+                </div>
+                <h3 class="font-sans font-bold text-xl text-forest">Panel de Revelación</h3>
+                <p class="text-xs text-taupe/80 mt-2">Ingresa la contraseña para definir el nombre y el género del bebé.</p>
+            </div>
+
+            <!-- STEP 1: password -->
+            <div id="admin-login-step" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-taupe mb-1">Contraseña</label>
+                    <input type="password" id="admin-password" onkeydown="if(event.key==='Enter') adminLogin()" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage/50 text-sm bg-alabaster/50 transition-all">
+                    <p id="admin-error" class="hidden text-xs font-bold text-red-500 mt-2">Contraseña incorrecta.</p>
+                </div>
+                <button onclick="adminLogin()" class="w-full py-3 bg-sage hover:bg-forest text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-colors shadow-md">
+                    Ingresar
+                </button>
+            </div>
+
+            <!-- STEP 2: reveal form -->
+            <div id="admin-form-step" class="hidden space-y-5">
+                <div>
+                    <span class="block text-xs font-bold uppercase tracking-wider text-taupe mb-2">Género</span>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="admin-gender" value="nina" class="peer sr-only" checked>
+                            <div class="px-4 py-3 rounded-xl border border-sage/30 bg-alabaster/50 text-center text-sm font-bold text-taupe peer-checked:border-pink-400 peer-checked:bg-pink-50 peer-checked:text-pink-600 transition-all">
+                                🌸 Niña
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="admin-gender" value="nino" class="peer sr-only">
+                            <div class="px-4 py-3 rounded-xl border border-sage/30 bg-alabaster/50 text-center text-sm font-bold text-taupe peer-checked:border-blue-400 peer-checked:bg-blue-50 peer-checked:text-blue-600 transition-all">
+                                💙 Niño
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-taupe mb-1">Nombre del Bebé</label>
+                    <input type="text" id="admin-baby-name" placeholder="Ej: Isabella" maxlength="40" class="w-full px-4 py-3 rounded-xl border border-sage/30 focus:outline-none focus:ring-2 focus:ring-sage/50 text-sm bg-alabaster/50 transition-all">
+                </div>
+
+                <div class="pt-1">
+                    <label class="flex items-start gap-3 cursor-pointer p-3 rounded-xl border border-sage/30 bg-alabaster/50 hover:bg-cream/20 transition-colors">
+                        <input type="checkbox" id="admin-force-reveal" class="mt-0.5 w-4 h-4 accent-gold cursor-pointer">
+                        <span>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-taupe">Mostrar revelación ahora</span>
+                            <span class="block text-[11px] text-taupe/70 leading-relaxed mt-0.5">
+                                Activado: la revelación se muestra de inmediato a todos, sin esperar.
+                                Desactivado: se respeta la cuenta regresiva.
+                            </span>
+                        </span>
+                    </label>
+                </div>
+
+                <button onclick="saveRevealData()" class="w-full py-3 bg-gold hover:bg-yellow-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-colors shadow-md">
+                    Guardar Revelación
+                </button>
+
+                <!-- Encoded payload to persist permanently in the HTML -->
+                <div class="pt-4 border-t border-sage/15">
+                    <p class="text-[11px] text-taupe/80 leading-relaxed mb-2">
+                        <i class="fa-solid fa-circle-info text-gold"></i>
+                        Guardado en este dispositivo. Para que <b>todos</b> los invitados lo vean, copia este código y reemplaza el valor de <code class="bg-alabaster px-1 rounded">eyJnIjoibmluYSIsIm4iOiJsb3JlbSBpcHN1bSBkb2xvciBhc2ltZXQifQ===</code> en el archivo <code class="bg-alabaster px-1 rounded">index.html</code>.
+                    </p>
+                    <textarea id="admin-encoded" readonly rows="3" class="w-full px-3 py-2 rounded-xl border border-sage/30 bg-alabaster/50 text-[11px] font-mono text-taupe break-all resize-none"></textarea>
+                    <div class="flex gap-3 mt-3">
+                        <button onclick="copyEncoded()" class="w-1/2 py-2.5 bg-alabaster hover:bg-cream/30 text-taupe font-bold rounded-xl text-[11px] uppercase tracking-wider transition-colors border border-sage/20">
+                            <i class="fa-solid fa-copy"></i> <span id="copy-text">Copiar</span>
+                        </button>
+                        <button onclick="clearRevealData()" class="w-1/2 py-2.5 bg-alabaster hover:bg-red-50 text-red-500 font-bold rounded-xl text-[11px] uppercase tracking-wider transition-colors border border-sage/20">
+                            <i class="fa-solid fa-trash"></i> Borrar local
+                        </button>
+                    </div>
+                </div>
+
+                <p id="admin-preview-note" class="text-[11px] text-center text-taupe/70">Con "Mostrar revelación ahora" desactivado, los invitados siguen viendo la cuenta regresiva.</p>
             </div>
         </div>
     </div>
@@ -775,6 +879,249 @@
         let forceSimulation = false; // Variable para controlar el botón de testing
 
         // ==========================================
+        //   REVELACIÓN DEL BEBÉ (nombre + género)
+        // ==========================================
+
+        // Hash MD5 de la contraseña de administración.
+        // Contraseña actual: "revelacion2026"
+        // Para cambiarla, genera el nuevo hash y reemplázalo aquí:
+        //   macOS/Linux:  printf '%s' 'NUEVA_CLAVE' | md5   (o md5sum)
+        const ADMIN_PASSWORD_MD5 = "f0a51eea90fbdf9c43e554f1eyJnIjoibmlubyIsIm4iOiJsb3JlbSBpcHN1bSBkb2xvciBhc2ltZXQiLCJmIjpmYWxzZX0=0ae22982";
+
+        // Datos de la revelación codificados en Base64: {"g":"nina","n":"Nombre","f":false}
+        //   g = género ("nina" | "nino"), n = nombre, f = forzar revelación ya (ignora el contador)
+        // Vacío = aún no se ha publicado. La administradora obtiene este valor
+        // desde el panel y lo pega aquí para que TODOS los invitados lo vean.
+        const REVEAL_DATA_ENCODED = "";
+
+        const REVEAL_STORAGE_KEY = "reveal_baby_data";
+        let adminUnlocked = false;
+        let revealForced = false; // Se recalcula en renderRevealData()
+
+        // --- Codificación / decodificación (Base64 seguro con acentos) ---
+        function encodeReveal(data) {
+            return btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+        }
+
+        function decodeReveal(encoded) {
+            try {
+                if (!encoded) return null;
+                const data = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+                if (!data || !data.n || !data.g) return null;
+                return data;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // localStorage tiene prioridad sobre el valor quemado en el HTML
+        function getRevealData() {
+            return decodeReveal(localStorage.getItem(REVEAL_STORAGE_KEY)) || decodeReveal(REVEAL_DATA_ENCODED);
+        }
+
+        // --- Pintar la tarjeta de revelación ---
+        function renderRevealData() {
+            const data = getRevealData();
+            revealForced = !!(data && data.f);
+
+            const nameEl = document.getElementById("reveal-baby-name");
+            const labelEl = document.getElementById("reveal-gender-label");
+            const msgEl = document.getElementById("reveal-message");
+            const iconEl = document.getElementById("reveal-icon");
+            const iconWrap = document.getElementById("reveal-icon-wrap");
+            const blobA = document.getElementById("reveal-blob-a");
+            const blobB = document.getElementById("reveal-blob-b");
+
+            if (!data) {
+                nameEl.innerText = "Muy Pronto";
+                nameEl.className = "font-sans font-extrabold text-4xl sm:text-6xl text-forest break-words";
+                labelEl.innerText = "Nuestro Bebé";
+                labelEl.className = "text-[11px] font-bold uppercase tracking-[0.3em] text-gold";
+                msgEl.innerText = "Los papás publicarán el nombre en cualquier momento.";
+                iconEl.innerText = "👶";
+                iconWrap.className = "w-24 h-24 rounded-full bg-cream/40 flex items-center justify-center text-5xl";
+                blobA.className = "absolute -top-10 -right-10 w-40 h-40 bg-cream rounded-full blur-2xl opacity-50";
+                blobB.className = "absolute -bottom-10 -left-10 w-40 h-40 bg-sage/30 rounded-full blur-2xl opacity-50";
+                return;
+            }
+
+            const isGirl = data.g === "nina";
+            const accent = isGirl ? "text-pink-500" : "text-blue-500";
+
+            iconEl.innerText = isGirl ? "🌸" : "💙";
+            nameEl.innerText = data.n;
+            nameEl.className = "font-sans font-extrabold text-4xl sm:text-6xl break-words " + accent;
+            labelEl.innerText = isGirl ? "¡Es una Niña!" : "¡Es un Niño!";
+            labelEl.className = "text-[11px] font-bold uppercase tracking-[0.3em] " + accent;
+            msgEl.innerText = isGirl
+                ? "🌸 ¡Es una maravillosa niña y estamos ansiosos de verla crecer! 🌸"
+                : "💙 ¡Es un maravilloso niño y estamos ansiosos de verlo crecer! 💙";
+            iconWrap.className = "w-24 h-24 rounded-full flex items-center justify-center text-5xl " + (isGirl ? "bg-pink-50" : "bg-blue-50");
+            blobA.className = "absolute -top-10 -right-10 w-40 h-40 rounded-full blur-2xl opacity-50 " + (isGirl ? "bg-pink-100" : "bg-blue-100");
+            blobB.className = "absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-2xl opacity-50 " + (isGirl ? "bg-purple-100" : "bg-cyan-100");
+        }
+
+        // --- Modal de administración ---
+        function openAdminModal() {
+            document.getElementById("admin-modal").classList.remove("hidden");
+            document.getElementById("admin-error").classList.add("hidden");
+            if (!adminUnlocked) {
+                document.getElementById("admin-password").value = "";
+                setTimeout(() => document.getElementById("admin-password").focus(), 50);
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById("admin-modal").classList.add("hidden");
+        }
+
+        function adminLogin() {
+            const input = document.getElementById("admin-password").value;
+            if (md5(input) !== ADMIN_PASSWORD_MD5) {
+                document.getElementById("admin-error").classList.remove("hidden");
+                return;
+            }
+
+            adminUnlocked = true;
+            document.getElementById("admin-login-step").classList.add("hidden");
+            document.getElementById("admin-form-step").classList.remove("hidden");
+
+            // Precargar el formulario con los datos actuales
+            const data = getRevealData();
+            if (data) {
+                document.getElementById("admin-baby-name").value = data.n;
+                const radio = document.querySelector('input[name="admin-gender"][value="' + data.g + '"]');
+                if (radio) radio.checked = true;
+                document.getElementById("admin-force-reveal").checked = !!data.f;
+                document.getElementById("admin-encoded").value = encodeReveal(data);
+            }
+        }
+
+        function saveRevealData() {
+            const name = document.getElementById("admin-baby-name").value.trim();
+            if (!name) {
+                alert("Escribe el nombre del bebé.");
+                return;
+            }
+
+            const gender = document.querySelector('input[name="admin-gender"]:checked').value;
+            const force = document.getElementById("admin-force-reveal").checked;
+            const encoded = encodeReveal({ g: gender, n: name, f: force });
+
+            localStorage.setItem(REVEAL_STORAGE_KEY, encoded);
+            document.getElementById("admin-encoded").value = encoded;
+
+            renderRevealData();
+            updateCountdown();
+            alert(
+                force
+                    ? "¡Revelación guardada y visible ahora! Copia el código y pégalo en index.html para publicarlo a todos los invitados."
+                    : "¡Revelación guardada! Permanece oculta hasta que la cuenta regresiva llegue a cero. Copia el código y pégalo en index.html para publicarlo a todos los invitados."
+            );
+        }
+
+        function clearRevealData() {
+            localStorage.removeItem(REVEAL_STORAGE_KEY);
+            document.getElementById("admin-encoded").value = "";
+            document.getElementById("admin-baby-name").value = "";
+            document.getElementById("admin-force-reveal").checked = false;
+            renderRevealData();
+            updateCountdown();
+        }
+
+        function copyEncoded() {
+            const field = document.getElementById("admin-encoded");
+            if (!field.value) return;
+            navigator.clipboard.writeText(field.value).then(() => {
+                const label = document.getElementById("copy-text");
+                label.innerText = "¡Copiado!";
+                setTimeout(() => { label.innerText = "Copiar"; }, 2000);
+            }).catch(() => {
+                field.select();
+                document.execCommand("copy");
+            });
+        }
+
+        // --- MD5 (implementación mínima, sin dependencias externas) ---
+        function md5(str) {
+            function rl(n, c) { return (n << c) | (n >>> (32 - c)); }
+            function au(x, y) {
+                const l = (x & 0xFFFF) + (y & 0xFFFF);
+                return ((((x >> 16) + (y >> 16) + (l >> 16)) << 16) | (l & 0xFFFF));
+            }
+            function cmn(q, a, b, x, s, t) { return au(rl(au(au(a, q), au(x, t)), s), b); }
+            function ff(a, b, c, d, x, s, t) { return cmn((b & c) | (~b & d), a, b, x, s, t); }
+            function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & ~d), a, b, x, s, t); }
+            function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
+            function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | ~d), a, b, x, s, t); }
+
+            // UTF-8 encode
+            const utf8 = unescape(encodeURIComponent(str));
+            const n = utf8.length;
+            const words = [];
+            for (let i = 0; i < n; i++) {
+                words[i >> 2] = (words[i >> 2] || 0) | (utf8.charCodeAt(i) << ((i % 4) * 8));
+            }
+            words[n >> 2] = (words[n >> 2] || 0) | (0x80 << ((n % 4) * 8));
+            const len = (((n + 8) >> 6) + 1) * 16;
+            for (let i = 0; i < len; i++) { if (words[i] === undefined) words[i] = 0; }
+            words[len - 2] = n * 8;
+
+            let a = 1732584193, b = -271733879, c = -1732584194, d = 271733878;
+            for (let i = 0; i < len; i += 16) {
+                const oa = a, ob = b, oc = c, od = d;
+                a = ff(a, b, c, d, words[i], 7, -680876936); d = ff(d, a, b, c, words[i + 1], 12, -389564586);
+                c = ff(c, d, a, b, words[i + 2], 17, 606105819); b = ff(b, c, d, a, words[i + 3], 22, -1044525330);
+                a = ff(a, b, c, d, words[i + 4], 7, -176418897); d = ff(d, a, b, c, words[i + 5], 12, 1200080426);
+                c = ff(c, d, a, b, words[i + 6], 17, -1473231341); b = ff(b, c, d, a, words[i + 7], 22, -45705983);
+                a = ff(a, b, c, d, words[i + 8], 7, 1770035416); d = ff(d, a, b, c, words[i + 9], 12, -1958414417);
+                c = ff(c, d, a, b, words[i + 10], 17, -42063); b = ff(b, c, d, a, words[i + 11], 22, -1990404162);
+                a = ff(a, b, c, d, words[i + 12], 7, 1804603682); d = ff(d, a, b, c, words[i + 13], 12, -40341101);
+                c = ff(c, d, a, b, words[i + 14], 17, -1502002290); b = ff(b, c, d, a, words[i + 15], 22, 1236535329);
+
+                a = gg(a, b, c, d, words[i + 1], 5, -165796510); d = gg(d, a, b, c, words[i + 6], 9, -1069501632);
+                c = gg(c, d, a, b, words[i + 11], 14, 643717713); b = gg(b, c, d, a, words[i], 20, -373897302);
+                a = gg(a, b, c, d, words[i + 5], 5, -701558691); d = gg(d, a, b, c, words[i + 10], 9, 38016083);
+                c = gg(c, d, a, b, words[i + 15], 14, -660478335); b = gg(b, c, d, a, words[i + 4], 20, -405537848);
+                a = gg(a, b, c, d, words[i + 9], 5, 568446438); d = gg(d, a, b, c, words[i + 14], 9, -1019803690);
+                c = gg(c, d, a, b, words[i + 3], 14, -187363961); b = gg(b, c, d, a, words[i + 8], 20, 1163531501);
+                a = gg(a, b, c, d, words[i + 13], 5, -1444681467); d = gg(d, a, b, c, words[i + 2], 9, -51403784);
+                c = gg(c, d, a, b, words[i + 7], 14, 1735328473); b = gg(b, c, d, a, words[i + 12], 20, -1926607734);
+
+                a = hh(a, b, c, d, words[i + 5], 4, -378558); d = hh(d, a, b, c, words[i + 8], 11, -2022574463);
+                c = hh(c, d, a, b, words[i + 11], 16, 1839030562); b = hh(b, c, d, a, words[i + 14], 23, -35309556);
+                a = hh(a, b, c, d, words[i + 1], 4, -1530992060); d = hh(d, a, b, c, words[i + 4], 11, 1272893353);
+                c = hh(c, d, a, b, words[i + 7], 16, -155497632); b = hh(b, c, d, a, words[i + 10], 23, -1094730640);
+                a = hh(a, b, c, d, words[i + 13], 4, 681279174); d = hh(d, a, b, c, words[i], 11, -358537222);
+                c = hh(c, d, a, b, words[i + 3], 16, -722521979); b = hh(b, c, d, a, words[i + 6], 23, 76029189);
+                a = hh(a, b, c, d, words[i + 9], 4, -640364487); d = hh(d, a, b, c, words[i + 12], 11, -421815835);
+                c = hh(c, d, a, b, words[i + 15], 16, 530742520); b = hh(b, c, d, a, words[i + 2], 23, -995338651);
+
+                a = ii(a, b, c, d, words[i], 6, -198630844); d = ii(d, a, b, c, words[i + 7], 10, 1126891415);
+                c = ii(c, d, a, b, words[i + 14], 15, -1416354905); b = ii(b, c, d, a, words[i + 5], 21, -57434055);
+                a = ii(a, b, c, d, words[i + 12], 6, 1700485571); d = ii(d, a, b, c, words[i + 3], 10, -1894986606);
+                c = ii(c, d, a, b, words[i + 10], 15, -1051523); b = ii(b, c, d, a, words[i + 1], 21, -2054922799);
+                a = ii(a, b, c, d, words[i + 8], 6, 1873313359); d = ii(d, a, b, c, words[i + 15], 10, -30611744);
+                c = ii(c, d, a, b, words[i + 6], 15, -1560198380); b = ii(b, c, d, a, words[i + 13], 21, 1309151649);
+                a = ii(a, b, c, d, words[i + 4], 6, -145523070); d = ii(d, a, b, c, words[i + 11], 10, -1120210379);
+                c = ii(c, d, a, b, words[i + 2], 15, 718787259); b = ii(b, c, d, a, words[i + 9], 21, -343485551);
+
+                a = au(a, oa); b = au(b, ob); c = au(c, oc); d = au(d, od);
+            }
+
+            const hex = "0123456789abcdef";
+            function toHex(num) {
+                let out = "";
+                for (let i = 0; i < 4; i++) {
+                    const byte = (num >> (i * 8)) & 255;
+                    out += hex.charAt((byte >> 4) & 0x0F) + hex.charAt(byte & 0x0F);
+                }
+                return out;
+            }
+            return toHex(a) + toHex(b) + toHex(c) + toHex(d);
+        }
+
+        // ==========================================
         //        // ==========================================
 
         // Fecha de Revelación: Domingo 16 de Agosto de 2026 a las 4:30 PM (16:30 hrs)
@@ -784,8 +1131,9 @@
             const now = new Date().getTime();
             const difference = revealTargetDate - now;
 
-            // Determinar si ya es hora de la revelación o si está activada la simulación
-            if (difference <= 0 || forceSimulation) {
+            // Se revela si ya llegó la hora, si la administradora activó "Mostrar ahora"
+            // o si está encendida la simulación de testing. Si no, sigue el contador.
+            if (difference <= 0 || revealForced || forceSimulation) {
                 // Cambiar la vista para revelar la imagen
                 document.getElementById("reveal-countdown-container").classList.add("hidden");
                 document.getElementById("reveal-image-container").classList.remove("hidden");
@@ -817,7 +1165,8 @@
             }
         }
 
-        // Ejecutar temporizador cada segundo
+        // Pintar la revelación y ejecutar temporizador cada segundo
+        renderRevealData();
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
