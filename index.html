@@ -882,16 +882,18 @@
         //   REVELACIÓN DEL BEBÉ (nombre + género)
         // ==========================================
 
-        // Hash MD5 de la contraseña de administración.
+        // ⚠️ NO PEGAR AQUÍ el código de la revelación. Esto es solo la contraseña.
+        // Hash MD5 de la contraseña de administración (32 caracteres, solo 0-9 y a-f).
         // Contraseña actual: "revelacion2026"
         // Para cambiarla, genera el nuevo hash y reemplázalo aquí:
         //   macOS/Linux:  printf '%s' 'NUEVA_CLAVE' | md5   (o md5sum)
-        const ADMIN_PASSWORD_MD5 = "f0a51eea90fbdf9c43e554f1eyJnIjoibmlubyIsIm4iOiJsb3JlbSBpcHN1bSBkb2xvciBhc2ltZXQiLCJmIjpmYWxzZX0=0ae22982";
+        const ADMIN_PASSWORD_MD5 = "f0a51eea90fbdf9c43e554f10ae22982";
 
+        // 👉 AQUÍ SÍ va el código que copias del panel ("Copiar").
         // Datos de la revelación codificados en Base64: {"g":"nina","n":"Nombre","f":false}
         //   g = género ("nina" | "nino"), n = nombre, f = forzar revelación ya (ignora el contador)
-        // Vacío = aún no se ha publicado. La administradora obtiene este valor
-        // desde el panel y lo pega aquí para que TODOS los invitados lo vean.
+        // Vacío = aún no se ha publicado. Pega el código entre las comillas de abajo
+        // para que TODOS los invitados lo vean.
         const REVEAL_DATA_ENCODED = "";
 
         const REVEAL_STORAGE_KEY = "reveal_baby_data";
@@ -977,6 +979,16 @@
 
         function adminLogin() {
             const input = document.getElementById("admin-password").value;
+            const errorEl = document.getElementById("admin-error");
+
+            // Si el hash fue editado por error, avisar en vez de fallar en silencio
+            if (!/^[0-9a-f]{32}$/i.test(ADMIN_PASSWORD_MD5)) {
+                errorEl.innerText = "Error de configuración: ADMIN_PASSWORD_MD5 no es un hash MD5 válido (32 caracteres 0-9/a-f). Revisa index.html.";
+                errorEl.classList.remove("hidden");
+                return;
+            }
+
+            errorEl.innerText = "Contraseña incorrecta.";
             if (md5(input) !== ADMIN_PASSWORD_MD5) {
                 document.getElementById("admin-error").classList.remove("hidden");
                 return;
